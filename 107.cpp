@@ -38,10 +38,9 @@ int prim(vector<vector<PII> > graph, int start, int N)
 	return mst_weight;
 }
 
-// Ans = 2153
 int main()
 {
-	int			N;
+	int			N, total = 0;
 	string			s;
 
 	cin >> N;
@@ -54,15 +53,10 @@ int main()
 			if (s[0] == '-') continue;
 			int val = atoi(s.c_str());
 			graph[i].push_back(MP(j, val));
+			total += val;
 		}
 	}
-	for (int i = 1; i <= N; i++)
-	{
-		vector<PII>	adj = graph[i];
-		cout << ".... " << i << " ...." << endl;
-		for (int j = 0; j < adj.size(); j++)
-			cout << adj[j].first << ", " << adj[j].second << endl;
-	}
-	cout << prim(graph, 1, N) << endl;
+	total /= 2; // undirected graph
+	cout << total - prim(graph, 1, N) << endl;
 	return 0;
 }
