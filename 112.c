@@ -20,17 +20,16 @@ int is_bouncy(int N)
 	return !(increasing || decreasing);
 }
 
-/* Answer = 9025812 */
 int main()
 {
-	int		i, count = 0, n = 10000000;
-	float		percent;
+	int		i, count = 0, n;
+	double		percent;
 
-	for (i = 100; i <= 10000000; i++)
+	for (i = 100; ; i++)
 	{
 		count += is_bouncy(i);
-		percent = 100 * ((1. * count) / (1. * n));
-		if (percent >= 90.0f)
+		percent = 100 * ((1. * count) / (1. * i));
+		if (percent >= 99.0f)
 			break;
 	}
 	printf("%d; %f\n", i, percent);
